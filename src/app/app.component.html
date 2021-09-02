@@ -1,17 +1,21 @@
 <button (click)="showEntryComponent()">Click Me</button>
 <app-sidebar *ngIf="flag"
            [message]="message"
-           (close)="onclose($event)">
-          <header>
+           (close)="onclose()">
+          <content>
             <app-filter1></app-filter1>
-          </header>
+          </content>
 </app-sidebar> 
 
 <button (click)="showEntryComponent2()">show filter2</button>
 <app-sidebar *ngIf="flag2"
           [message]="message"
-          (close)="onclose2($event)">
-         <header>
+          (close)="onclose2()">
+         <content>
            <app-filter2></app-filter2>
-         </header>
+         </content>  
+         <!---<button>Fatma</button>
+         <hr>
+         <button>Omran</button>-->
+         <!--<app-buttons-section></app-buttons-section>-->
 </app-sidebar> 

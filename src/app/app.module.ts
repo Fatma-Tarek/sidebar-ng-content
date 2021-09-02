@@ -6,19 +6,24 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { Filter1Component } from './filter1/filter1.component';
 import { Filter2Component } from './filter2/filter2.component';
+import { ButtonsSectionComponent } from './buttons-section/buttons-section.component';
+import { FormsModule, NgForm } from '@angular/forms';
+import { GlobalServices } from './global.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     Filter1Component,
-    Filter2Component
+    Filter2Component,
+    ButtonsSectionComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [GlobalServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

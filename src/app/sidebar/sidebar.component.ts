@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { GlobalServices } from '../global.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,24 +7,36 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
-  constructor() {
+  
+  constructor(private globalServices: GlobalServices) {
     console.log("hello from ngIf")
    }
+
   @Input() message: string='';
-  @Output() close = new EventEmitter<string>();
+  @Output() close = new EventEmitter<void>();
   name!: string;
   ngOnInit(): void {
   }
 
   onClose(){
     this.close.emit(
-      this.name = "Fatoma"
     );
   }
 
   ngOnDestroy(){
     console.clear();
+
+  }
+
+
+  resetForm(){
+  this.globalServices.formReset.emit();
+  }
+
+
+  sendForm(){
+    console.log("send form")
+    this.globalServices.sendForm.emit();
   }
 
 }

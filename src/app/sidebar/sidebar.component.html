@@ -1,13 +1,23 @@
 <div class="backdrop" (click)="onClose()"></div>
 <div class="alert-box">
-  <!--<ng-content></ng-content>-->
-  <div class="header">
-    <ng-content select="header"></ng-content>
+  <!-- Content-->
+  <div class="content">
+    <ng-content select="content"></ng-content>
   </div>
-  <div class="alert-box-actions">
-    <button class="btn btn-primary" (click)="onClose()">
-        close
+
+  
+  <!--<ng-content></ng-content>-->
+  <!---- Button close-->
+  <div class="alert-box-actions" id="footer">
+    <button class="btn btn-danger mx-1" (click)="resetForm()">
+      Reset
     </button>
+    <button class="btn btn-success mx-1" (click)="sendForm()">
+      Send
+    </button>
+    <button class="btn btn-primary mx-1" (click)="onClose()">
+      close
+  </button>
   </div>
 </div>
 

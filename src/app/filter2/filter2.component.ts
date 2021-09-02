@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { GlobalServices } from '../global.service';
 
 @Component({
   selector: 'app-filter2',
@@ -7,9 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Filter2Component implements OnInit {
 
-  constructor() { }
+  @ViewChild('f') signupForm: NgForm;
+  
+  private closeSub: Subscription;
 
-  ngOnInit(): void {
+  constructor(private globalService: GlobalServices) { 
+    this.closeSub = this.globalService.formReset.subscribe(
+      ()=>{this.signupForm.reset()}
+    );
+
+    this.closeSub = this.globalService.sendForm.subscribe(
+      ()=>{
+          console.log("subscribe form")
+          alert("Form of filter2 has been sent");
+          console.log(this.signupForm);
+          this.signupForm.reset();
+        }
+      )
+  }
+
+  ngOnInit(): void { }
+
+
+  onSubmit(){
+    console.log(this.signupForm)
+    this.signupForm.reset();
+  }
+
+  ngOnDestroy(){
+    this.closeSub.unsubscribe();
   }
 
 }

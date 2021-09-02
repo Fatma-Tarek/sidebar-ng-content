@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -6,13 +6,14 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   title = 'implement-content-projection';
   flag = false;
   flag2 = false;
   flagName = false;
   message = "unkown error"
   name!: string;
+  private closeSub: Subscription;
   constructor(){}
   showEntryComponent(){
     if(this.flag !== true){
@@ -20,10 +21,10 @@ export class AppComponent {
       this.flag= !this.flag
     }
   }
-  onclose(name: string){
+  onclose(){
     this.flag= !this.flag;
-    this.name = name;
     console.log(this.name)
+    this.closeSub.unsubscribe;
   }
 
   showEntryComponent2(){
@@ -33,12 +34,15 @@ export class AppComponent {
     }
   }
 
-  onclose2(name: string){
+  onclose2(){
     this.flag2= !this.flag2;
-    this.name = name;
     console.log(this.name)
+    this.closeSub.unsubscribe;
   }
   
+  ngOnDestroy(){
+    
+  }
 
   
 }
