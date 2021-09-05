@@ -1,6 +1,8 @@
 <button (click)="showEntryComponent()">Click Me</button>
 <app-sidebar *ngIf="flag"
+            class="appear"
            [message]="message"
+           [lang] ="defaultLanguage"
            (close)="onclose()">
           <content>
             <app-filter1></app-filter1>
@@ -10,6 +12,8 @@
 <button (click)="showEntryComponent2()">show filter2</button>
 <app-sidebar *ngIf="flag2"
           [message]="message"
+          class="appear"
+          [lang] ="defaultLanguage"
           (close)="onclose2()">
          <content>
            <app-filter2></app-filter2>
@@ -19,3 +23,23 @@
          <button>Omran</button>-->
          <!--<app-buttons-section></app-buttons-section>-->
 </app-sidebar> 
+
+<!---- Form for languages ------>
+<br><br>
+<form (ngSubmit) = "onSubmit(f)" #f="ngForm" class="col-xs-6">
+  <div class="form-group" class="col-xs-6">
+    <label for="secret">Select Language</label>
+    <select 
+      id="secret" 
+      class="form-control"
+      name="secret"
+      [ngModel]= "defaultLanguage"
+      class="col-xs-6">
+      <option value="EN">English</option>
+      <option value="AR">Arabic</option>
+    </select>
+  </div>
+  <button 
+          class="btn btn-primary" 
+          type="submit">Submit</button>
+</form>

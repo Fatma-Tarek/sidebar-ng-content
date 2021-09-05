@@ -10,10 +10,13 @@ export class SidebarComponent implements OnInit {
   
   constructor(private globalServices: GlobalServices) {
     console.log("hello from ngIf")
+    console.log("lang ="+this.lang)
+    
    }
 
   @Input() message: string='';
   @Output() close = new EventEmitter<void>();
+  @Input() lang: string;
   name!: string;
   ngOnInit(): void {
   }

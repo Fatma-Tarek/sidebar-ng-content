@@ -1,4 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -13,8 +14,11 @@ export class AppComponent implements OnDestroy {
   flagName = false;
   message = "unkown error"
   name!: string;
+  defaultLanguage: string = "EN";
+  @ViewChild('f') signupForm: NgForm;
   private closeSub: Subscription;
-  constructor(){}
+  constructor(){
+  }
   showEntryComponent(){
     if(this.flag !== true){
       console.log("hello");
@@ -44,5 +48,8 @@ export class AppComponent implements OnDestroy {
     
   }
 
+  onSubmit(f: NgForm){
+    this.defaultLanguage = f.value.secret;
+    console.log(f.value.secret)  }
   
 }
