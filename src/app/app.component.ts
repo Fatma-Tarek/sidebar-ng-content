@@ -8,23 +8,28 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnDestroy {
+  @ViewChild('f') signupForm: NgForm;
+  private closeSub: Subscription;
   title = 'implement-content-projection';
   flag = false;
   flag2 = false;
   flagName = false;
   message = "unkown error"
   name!: string;
+  lang!: string;
   defaultLanguage: string = "EN";
-  @ViewChild('f') signupForm: NgForm;
-  private closeSub: Subscription;
+
   constructor(){
+    console.log("lang from parent = "+this.lang)
   }
+
   showEntryComponent(){
     if(this.flag !== true){
       console.log("hello");
       this.flag= !this.flag
     }
   }
+  
   onclose(){
     this.flag= !this.flag;
     console.log(this.name)
@@ -50,6 +55,7 @@ export class AppComponent implements OnDestroy {
 
   onSubmit(f: NgForm){
     this.defaultLanguage = f.value.secret;
-    console.log(f.value.secret)  }
+    console.log(f.value.secret)  
+  }
   
 }
