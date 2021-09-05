@@ -39,4 +39,6 @@ export class SidebarComponent implements OnInit {
     this.globalServices.sendForm.emit();
   }
 
+  
+
 }

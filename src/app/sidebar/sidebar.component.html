@@ -1,14 +1,14 @@
 <div class="backdrop" (click)="onClose()"></div>
 <div class="alert-box">
   <!-- Content-->
-  <div class="content">
-    <ng-content select="content"></ng-content>
+  <div class="content scrollbar scrollbar-primary" id="test1">
+    <ng-content select="content" class="force-overflow"></ng-content>
   </div>
 
   
   <!--<ng-content></ng-content>-->
   <!---- Button close-->
-  <div class="alert-box-actions" id="footer">
+  <div class="alert-box-actions selectionTable" id="footer">
     <button class="btn btn-danger mx-1" (click)="resetForm()">
       Reset
     </button>
