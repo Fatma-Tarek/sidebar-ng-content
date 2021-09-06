@@ -1,3 +1,8 @@
+.appear {
+  transition: 2s ease-out;
+}
+
+
 .backdrop {
     position: fixed;
     top: 0;
@@ -17,11 +22,10 @@
     position: fixed;
     top: 0;
     left: 0;
-    /*right: 0;*/
     /* top layer */
     z-index: 9999;
     background: white;
-
+    
   }
 
   .alert-box2 {
@@ -36,7 +40,7 @@
     /* top layer */
     z-index: 9999;
     background: white;
-
+    
   }
   
   .alert-box-actions {

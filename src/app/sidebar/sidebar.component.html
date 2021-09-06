@@ -1,12 +1,10 @@
 <div class="backdrop" (click)="onClose()"></div>
 <!--<div class="alert-box">-->
-<div [ngClass]="(lang === 'EN')? 'alert-box':'alert-box2'">
+<div [ngClass]="(lang === 'AR')? 'alert-box2':'alert-box'" [@list2] >
   <!-- Content-->
   <div class="content scrollbar scrollbar-primary" id="test1">
     <ng-content select="content" class="force-overflow"></ng-content>
   </div>
-
-  
   <!--<ng-content></ng-content>-->
   <!---- Button close-->
   <div class="alert-box-actions selectionTable" id="footer">
@@ -18,7 +16,7 @@
     </button>
     <button class="btn btn-primary mx-1" (click)="onClose()">
       close
-  </button>
+    </button>
   </div>
 </div>
 

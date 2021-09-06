@@ -1,3 +1,8 @@
+* {
+    margin-top: 10px;
+    margin-left: 10px
+}
+
 .appear {
     transition: 2s ease-out;
 }

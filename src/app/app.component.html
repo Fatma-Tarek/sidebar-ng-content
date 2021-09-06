@@ -1,6 +1,5 @@
 <button (click)="showEntryComponent()">Click Me</button>
 <app-sidebar *ngIf="flag"
-            class="appear"
            [message]="message"
            [lang] ="lang"
            (close)="onclose()">
@@ -12,8 +11,8 @@
 <button (click)="showEntryComponent2()">show filter2</button>
 <app-sidebar *ngIf="flag2"
           [message]="message"
-          class="appear"
           [lang] ="lang"
+          
           (close)="onclose2()">
          <content>
            <app-filter2></app-filter2>
