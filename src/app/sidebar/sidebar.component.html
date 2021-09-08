@@ -1,6 +1,9 @@
 <div class="backdrop" (click)="onClose()"></div>
 <!--<div class="alert-box">-->
-<div [ngClass]="(lang === 'AR')? 'alert-box2':'alert-box'" [@list2] >
+<div [ngClass]="(lang === 'AR')? 'alert-box2':'alert-box'"
+     [@list2]= "state"
+     (@list2.start)="animatedStarted($event)"
+     (@list2.done)="animatedEnded($event)" >
   <!-- Content-->
   <div class="content scrollbar scrollbar-primary" id="test1">
     <ng-content select="content" class="force-overflow"></ng-content>

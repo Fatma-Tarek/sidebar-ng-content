@@ -1,71 +1,12 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { trigger , state , style, transition, animate, keyframes} from '@angular/animations'
+import { GlobalServices } from './global.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  /*animations: [
-    trigger('list1', [
-      //in is just dumy data 
-      state('in', style({
-        opacity: 1, //fully visiable
-         transform: 'translateX(0)'
-      })),
-      transition('void => *', [
-        style({
-          opacity:0,
-          transform: 'translateX(-100px)'
-        }),
-        animate(500)
-      ]),
-      transition('* => void',[
-        animate(300, style({
-          transform: 'translateX(100px)',
-          opacity: 0
-        }))
-      ])
-    ]),
-    trigger('list2', [
-      //in is just dumy data 
-      state('in', style({
-        opacity: 1, //fully visiable
-         transform: 'translateX(0)'
-      })),
-      transition('void => *', [
-        animate(1000, keyframes([
-          style({
-            transform: 'translateX(-100px)', 
-            opacity: 0,
-            offset: 0
-          }),
-          style({
-            transform: 'translateX(-50px)', 
-            opacity: 0.5,
-            offset: .3
-          }),
-          style({
-            transform: 'translateX(-20px)', 
-            opacity: 1,
-            offset: .8
-          }),
-          style({
-            transform: 'translateX(0px)', 
-            opacity: 1,
-            offset: 1
-          }),
-        ]))
-      ]),
-      transition('* => void',[
-        animate(300, style({
-          transform: 'translateX(100px)',
-          opacity: 0
-        }))
-      ])
-    ]),
-  ]*/
 })
 export class AppComponent implements OnDestroy {
   @ViewChild('f') signupForm: NgForm;
@@ -79,34 +20,50 @@ export class AppComponent implements OnDestroy {
   lang!: string;
   defaultLanguage: string = "EN";
 
-  constructor(){
+  constructor(private globalService: GlobalServices){
     console.log("lang from parent = "+this.lang)
   }
 
   showEntryComponent(){
-    if(this.flag !== true){
-      console.log("hello");
-      this.flag= !this.flag
-    }
+    console.log("show Entry Component1");
+    console.log("flag1 before toggle=" + this.flag);
+      if(this.flag !== true){
+        console.log("flag1 =" + this.flag);
+        this.flag= !this.flag
+      }
   }
   
   onclose(){
-    this.flag= !this.flag;
-    console.log(this.name)
-    this.closeSub.unsubscribe;
+    
+    console.log("From onClose filter1 ")
+    setTimeout(()=>{
+      this.flag= !this.flag; 
+    }, 1000)
+    //this.closeSub.unsubscribe();
+    /*setTimeout(()=>{
+      this.closeSub.unsubscribe;
+    }, 1000)*/
   }
 
   showEntryComponent2(){
-    if(this.flag2 !== true){
-      console.log("hello2");
-      this.flag2 = !this.flag2
-    }
+      console.log("show Entry Component2");
+      console.log("Flag2 before toggle = " +this.flag2)
+      if(this.flag2 !== true){
+        console.log("Flag2 = " +this.flag2)
+        this.flag2 = !this.flag2
+      }   
   }
 
   onclose2(){
-    this.flag2= !this.flag2;
-    console.log(this.name)
+    console.log("From onClose2 filter2 ")
+    setTimeout(()=>{
+      this.flag2= !this.flag2;
+      console.log("inside setOutTime")
+    }, 1000)
+    /*console.log("before subscribe")
     this.closeSub.unsubscribe;
+    console.log("after before subscribe")*/
+    
   }
   
   ngOnDestroy(){
